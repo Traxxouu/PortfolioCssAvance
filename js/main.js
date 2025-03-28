@@ -397,4 +397,56 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialiser les animations au chargement
   handleScrollAnimations();
   handleParallaxEffect();
+  
+  // Enhancements for Netflix-style project cards
+  const cards = document.querySelectorAll('.netflix-card');
+  const featuredCards = document.querySelectorAll('.netflix-card--featured');
+
+  cards.forEach((card, index) => {
+    card.style.animationDelay = `${index * 0.15}s`;
+
+    card.addEventListener('mouseenter', () => {
+      cards.forEach(otherCard => {
+        if (otherCard !== card) {
+          otherCard.style.opacity = '0.7';
+          otherCard.style.transform = 'scale(0.95)';
+        }
+      });
+    });
+
+    card.addEventListener('mouseleave', () => {
+      cards.forEach(otherCard => {
+        otherCard.style.opacity = '1';
+        otherCard.style.transform = '';
+      });
+    });
+  });
+
+  featuredCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const xPercent = (e.clientX - rect.left) / rect.width;
+      const yPercent = (e.clientY - rect.top) / rect.height;
+
+      card.style.transform = `scale(1.05) rotateY(${(xPercent - 0.5) * 10}deg) rotateX(${(0.5 - yPercent) * 10}deg)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+
+  cards.forEach(card => {
+    card.setAttribute('tabindex', '0');
+
+    card.addEventListener('focus', () => {
+      card.classList.add('keyboard-focus');
+      card.style.transform = 'scale(1.15) translateY(-10px)';
+    });
+
+    card.addEventListener('blur', () => {
+      card.classList.remove('keyboard-focus');
+      card.style.transform = '';
+    });
+  });
 });

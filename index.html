@@ -374,6 +374,445 @@
             from { opacity: 1; }
             to { opacity: 0; }
         }
+
+        /* Styles pour la section d'expérience style Netflix */
+        .experience {
+            padding: 64px 0;
+            background-color: #1f1f1f;
+        }
+
+        .experience-card {
+            background-color: rgba(30, 30, 30, 0.95);
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .experience-card__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .experience-card__title-area {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .experience-card__title {
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+            font-family: "Bebas Neue", sans-serif;
+        }
+
+        .experience-card__match {
+            display: inline-block;
+            color: #46d369;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .experience-card__rating {
+            color: #e50914;
+            font-size: 18px;
+        }
+
+        .experience-card__rating i {
+            margin-left: 2px;
+        }
+
+        .experience-card__meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: #b3b3b3;
+        }
+
+        .experience-card__meta span::after {
+            content: "•";
+            margin-left: 12px;
+        }
+
+        .experience-card__meta span:last-child::after {
+            display: none;
+        }
+
+        .experience-card__year {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .experience-card__synopsis {
+            color: #b3b3b3;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .experience-card__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .experience-card__tags span {
+            color: #b3b3b3;
+            font-size: 13px;
+        }
+
+        .experience-card__tags span::after {
+            content: "•";
+            margin-left: 10px;
+        }
+
+        .experience-card__tags span:last-child::after {
+            display: none;
+        }
+
+        .experience-card__skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 12px;
+        }
+
+        .experience-card__skill {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+        }
+
+        .experience-card__skill i {
+            color: #e50914;
+            font-size: 20px;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .experience-card__skill span {
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .experience-card__header {
+                flex-direction: column;
+            }
+
+            .experience-card__rating {
+                margin-top: 10px;
+            }
+
+            .experience-card__meta {
+                flex-wrap: wrap;
+            }
+
+            .experience-card__skills {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-card__title {
+                font-size: 32px;
+            }
+        }
+
+        /* Styles pour les cartes de projets style Netflix */
+        .netflix-card {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 8px;
+            height: 170px;
+            background-color: #1a1a1a;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .netflix-card__image {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .netflix-card__placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to bottom right, #333, #1a1a1a);
+        }
+
+        .netflix-card__placeholder i {
+            font-size: 3rem;
+            color: #e50914;
+        }
+
+        .netflix-card__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.2) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 16px;
+        }
+
+        .netflix-card__content {
+            transform: translateY(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .netflix-card__github {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 16px;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .netflix-card:hover {
+            transform: scale(1.4) translateZ(0);
+            z-index: 10;
+        }
+
+        .netflix-card:hover .netflix-card__overlay {
+            opacity: 1;
+        }
+
+        .netflix-card:hover .netflix-card__content {
+            transform: translateY(0);
+        }
+
+        .netflix-card:hover .netflix-card__github {
+            opacity: 1;
+        }
+
+        .netflix-card__tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 8px;
+        }
+
+        .netflix-card__tech span {
+            padding: 2px 6px;
+            border-radius: 12px;
+            font-size: 10px;
+            background: rgba(229, 9, 20, 0.7);
+            color: #fff;
+        }
+
+        .netflix-card__description {
+            font-size: 11px;
+            color: #b3b3b3;
+            margin-bottom: 8px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .netflix-card--featured {
+            height: 500px; /* Increased height for more space */
+        }
+
+        .netflix-card--featured .netflix-card__overlay {
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.4) 100%);
+            padding: 24px;
+            justify-content: center;
+        }
+
+        .netflix-card--featured .netflix-card__title {
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+
+        .netflix-card--featured .netflix-card__description {
+            font-size: 1.2rem; /* Larger font size for better readability */
+            -webkit-line-clamp: 10; /* Allow more lines for text */
+            margin-bottom: 16px;
+        }
+
+        .netflix-card--featured .netflix-card__tech span {
+            font-size: 12px;
+        }
+
+        .netflix-card--featured .netflix-card__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 12px;
+            margin-bottom: 16px;
+        }
+
+        .netflix-card--featured .netflix-card__tags span {
+            color: #b3b3b3;
+            position: relative;
+        }
+
+        .netflix-card--featured .netflix-card__tags span:not(:last-child)::after {
+            content: "•";
+            position: absolute;
+            right: -8px;
+        }
+
+        .netflix-play-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            color: #000;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .netflix-play-btn:hover {
+            background: #e50914; /* Red hover color */
+            color: #fff; /* Ensure text remains visible */
+        }
+
+        .netflix-play-btn i {
+            font-size: 16px;
+        }
+
+        .netflix-info-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .netflix-info-btn:hover {
+            background: #e50914; /* Red hover color */
+            color: #fff; /* Ensure text remains visible */
+        }
+
+        /* Adjustments for Netflix-style project cards */
+        .netflix-row__container {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping of cards */
+            gap: 16px; /* Add spacing between cards */
+            justify-content: center; /* Center the cards */
+            overflow: visible; /* Ensure cards are not clipped */
+            position: relative; /* Required for z-index on hover */
+        }
+
+        .netflix-card {
+            width: 350px; /* Increased width */
+            height: 220px; /* Increased height */
+            font-size: 1.1rem; /* Increased font size for better readability */
+        }
+
+        .netflix-card__description {
+            font-size: 1rem; /* Increased description font size */
+            -webkit-line-clamp: 3; /* Allow more lines for better readability */
+        }
+
+        .netflix-card__tech span {
+            font-size: 0.9rem; /* Increased tech tag font size */
+            padding: 4px 8px; /* Adjusted padding for better visibility */
+        }
+
+        .netflix-card--featured {
+            height: 420px; /* Increased height for featured cards */
+        }
+
+        .netflix-card--featured .netflix-card__description {
+            font-size: 1.2rem; /* Larger font size for featured card descriptions */
+            -webkit-line-clamp: 7; /* Allow more lines for featured cards */
+        }
+
+        .netflix-card--featured .netflix-card__tech span {
+            font-size: 1rem; /* Larger font size for featured card tech tags */
+        }
+
+        @media (max-width: 768px) {
+            .netflix-card:hover {
+                transform: none; /* Disable zoom on smaller screens */
+            }
+        }
+
+        /* Styles pour les étiquettes de compétences */
+        .skills__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .skills__tag {
+            background-color: rgba(229, 9, 20, 0.8);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(229, 9, 20, 0.3);
+        }
+        
+        .skills__tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(229, 9, 20, 0.5);
+            background-color: #e50914;
+        }
+        
+        @media (max-width: 768px) {
+            .skills__tags {
+                gap: 8px;
+            }
+            
+            .skills__tag {
+                font-size: 12px;
+                padding: 8px 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -520,6 +959,313 @@
                                 <i class="fab fa-github"></i>
                                 <span>Git & Github</span>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about__content">
+                    <div class="about__text scroll-reveal">
+                        <h2 class="section-title">Salut ! Je suis <span>Maël</span></h2>
+                        <p class="about__description">
+                            Je suis un développeur web passionné, actuellement étudiant à l'EFREI. J'adore créer des projets dynamiques et innovants, tout en garantissant des solutions modernes, optimisées, et une expérience utilisateur fluide.
+                        </p>
+                        <div class="about__cards">
+                            <div class="card card--flip netflix-zoom">
+                                <div class="card__inner">
+                                    <div class="card__front">
+                                        <i class="fas fa-code"></i>
+                                        <h3>Création de sites web</h3>
+                                    </div>
+                                    <div class="card__back">
+                                        <p>HTML, CSS, JavaScript</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card--flip netflix-zoom">
+                                <div class="card__inner">
+                                    <div class="card__front">
+                                        <i class="fas fa-laptop-code"></i>
+                                        <h3>Applications web</h3>
+                                    </div>
+                                    <div class="card__back">
+                                        <p>Fonctionnalités dynamiques et réactives</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card--flip netflix-zoom">
+                                <div class="card__inner">
+                                    <div class="card__front">
+                                        <i class="fas fa-lock"></i>
+                                        <h3>Authentification</h3>
+                                    </div>
+                                    <div class="card__back">
+                                        <p>Sécurité et gestion des utilisateurs</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card--flip netflix-zoom">
+                                <div class="card__inner">
+                                    <div class="card__front">
+                                        <i class="fas fa-paint-brush"></i>
+                                        <h3>Optimisation UX/UI</h3>
+                                    </div>
+                                    <div class="card__back">
+                                        <p>Design centré sur l'utilisateur</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card--flip netflix-zoom">
+                                <div class="card__inner">
+                                    <div class="card__front">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <h3>Responsive Design</h3>
+                                    </div>
+                                    <div class="card__back">
+                                        <p>Adaptation pour une expérience mobile parfaite</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about__image scroll-reveal animate--delay-2">
+                        <div class="profile-frame glare-effect">
+                            <!-- Remplacez par votre photo -->
+                            <div class="profile-placeholder">
+                                <img src="media/photoProfile.jpg" alt="Photo de Maël Barbe" class="profile-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience section -->
+        <section class="experience">
+            <div class="container">
+                <h2 class="section-title">Expérience</h2>
+                <div class="experience-card">
+                    <div class="experience-card__header">
+                        <div class="experience-card__title-area">
+                            <h3 class="experience-card__title">EFREI</h3>
+                            <span class="experience-card__match">100% recommandé</span>
+                        </div>
+                        <div class="experience-card__rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="experience-card__meta">
+                        <span class="experience-card__year">2023 - Présent</span>
+                        <span class="experience-card__duration">EFREI Paris</span>
+                        <span class="experience-card__category">Formation en Ingénierie Numérique et Informatique</span>
+                    </div>
+                    <div class="experience-card__synopsis">
+                        <p>En tant qu'étudiant passionné, je me spécialise dans le développement web et application, perfectionnant mes compétences techniques et créatives.</p>
+                    </div>
+                    <div class="experience-card__tags">
+                        <span>Développement Web</span>
+                        <span>Application</span>
+                        <span>UI/UX Design</span>
+                        <span>Programmation</span>
+                    </div>
+                    <div class="experience-card__skills">
+                        <div class="experience-card__skill">
+                            <i class="fas fa-code"></i>
+                            <span>Création de sites web sur mesure (HTML, CSS, JavaScript)</span>
+                        </div>
+                        <div class="experience-card__skill">
+                            <i class="fas fa-laptop-code"></i>
+                            <span>Développement d'applications web interactives</span>
+                        </div>
+                        <div class="experience-card__skill">
+                            <i class="fas fa-lock"></i>
+                            <span>Intégration de systèmes d'authentification</span>
+                        </div>
+                        <div class="experience-card__skill">
+                            <i class="fas fa-paint-brush"></i>
+                            <span>Optimisation de l'expérience utilisateur (UX/UI)</span>
+                        </div>
+                        <div class="experience-card__skill">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Adaptation de sites pour mobiles (Responsive Design)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects section (style Netflix) -->
+        <section class="featured-projects">
+            <div class="container">
+                <h2 class="section-title netflix-title-animation">Projets à la une</h2>
+                
+                <!-- Projet en vedette -->
+                <div class="netflix-row">
+                    <h3 class="netflix-row__title">Projet en cours</h3>
+                    <div class="netflix-row__container">
+                        <div class="netflix-card netflix-card--featured">
+                            <div class="netflix-card__image">
+                                <div class="netflix-card__placeholder">
+                                    <i class="fas fa-headphones"></i>
+                                </div>
+                                <a href="https://github.com/username/audyo" target="_blank" class="netflix-card__github">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <div class="netflix-card__overlay">
+                                    <div class="netflix-card__content">
+                                        <h4>Audyo</h4>
+                                        <div class="netflix-card__tech">
+                                            <span>React.js</span>
+                                            <span>Node.js</span>
+                                            <span>IA</span>
+                                        </div>
+                                        <div class="netflix-card__tags">
+                                            <span>Web App</span>
+                                            <span>Audio</span>
+                                            <span>Intelligence Artificielle</span>
+                                        </div>
+                                        <p class="netflix-card__description">Audyo est un projet innovant visant à faciliter la création, l'édition et la diffusion de contenu audio à partir de texte, grâce à l'intelligence artificielle. Il s'adresse à tous ceux qui veulent produire rapidement des podcasts, voix off, ou récits audio sans compétences techniques avancées.</p>
+                                        <div style="display: flex; gap: 12px; margin-top: 16px;">
+                                            <a href="#" class="netflix-play-btn">
+                                                <i class="fas fa-headphones"></i> Découvrir
+                                            </a>
+                                            <a href="#" class="netflix-info-btn">
+                                                <i class="fas fa-info-circle"></i> Plus d'infos
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Projets récents -->
+                <div class="netflix-row">
+                    <h3 class="netflix-row__title">Mes projets récents</h3>
+                    <div class="netflix-row__container">
+                        <!-- Projet Minecraft YMT -->
+                        <div class="netflix-card">
+                            <div class="netflix-card__image">
+                                <div class="netflix-card__placeholder">
+                                    <i class="fas fa-gamepad"></i>
+                                </div>
+                                <a href="https://github.com/Traxxouu/minecraft-ymt-site" target="_blank" class="netflix-card__github">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <div class="netflix-card__overlay">
+                                    <div class="netflix-card__content">
+                                        <h4>Minecraft YMT</h4>
+                                        <div class="netflix-card__tech">
+                                            <span>HTML</span>
+                                            <span>CSS</span>
+                                            <span>JavaScript</span>
+                                        </div>
+                                        <p class="netflix-card__description">Site web officiel du serveur Minecraft YMT avec présentation, règlement et FAQ. Interface intuitive pour tous les joueurs.</p>
+                                        <a href="https://minecraft-ymt.netlify.app" target="_blank" class="netflix-play-btn">
+                                            <i class="fas fa-external-link-alt"></i> Visiter
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Projet Coche -->
+                        <div class="netflix-card">
+                            <div class="netflix-card__image">
+                                <div class="netflix-card__placeholder">
+                                    <i class="fas fa-tasks"></i>
+                                </div>
+                                <a href="https://github.com/Traxxouu/Projet-Coche" target="_blank" class="netflix-card__github">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <div class="netflix-card__overlay">
+                                    <div class="netflix-card__content">
+                                        <h4>Projet Coche</h4>
+                                        <div class="netflix-card__tech">
+                                            <span>PHP</span>
+                                            <span>MySQL</span>
+                                            <span>HTML/CSS</span>
+                                        </div>
+                                        <p class="netflix-card__description">Site de gestion de tâches avec authentification sécurisée et interface interactive. Optimisé pour mobile et desktop.</p>
+                                        <a href="https://coche.rf.gd/?i=2" target="_blank" class="netflix-play-btn">
+                                            <i class="fas fa-external-link-alt"></i> Visiter
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- SpotiClock -->
+                        <div class="netflix-card">
+                            <div class="netflix-card__image">
+                                <div class="netflix-card__placeholder">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <a href="https://github.com/Traxxouu/SpotifyAlarm" target="_blank" class="netflix-card__github">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <div class="netflix-card__overlay">
+                                    <div class="netflix-card__content">
+                                        <h4>SpotiClock</h4>
+                                        <div class="netflix-card__tech">
+                                            <span>Python</span>
+                                            <span>Tkinter</span>
+                                            <span>API Spotify</span>
+                                        </div>
+                                        <p class="netflix-card__description">Application de bureau qui vous réveille avec vos playlists Spotify préférées. Interface intuitive et facile à configurer.</p>
+                                        <a href="https://drive.google.com/drive/folders/1054aag31PHzy6whlDiGdEQSxHx3ira6K" target="_blank" class="netflix-play-btn">
+                                            <i class="fas fa-download"></i> Télécharger
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projets web -->
+
+                
+                <div class="netflix-cta">
+                    <a href="projets.html" class="btn btn--large btn--primary">Voir tous mes projets</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills section -->
+        <section class="skills">
+            <div class="container">
+                <h2 class="section-title">Compétences</h2>
+                <div class="skills__grid">
+                    <div class="skills__category scroll-reveal">
+                        <h3>Langages</h3>
+                        <div class="skills__tags">
+                            <span class="skills__tag">HTML</span>
+                            <span class="skills__tag">CSS</span>
+                            <span class="skills__tag">JavaScript</span>
+                            <span class="skills__tag">PHP</span>
+                            <span class="skills__tag">Python</span>
+                            <span class="skills__tag">SQL</span>
+                        </div>
+                    </div>
+                    <div class="skills__category scroll-reveal animate--delay-2">
+                        <h3>Frameworks & Outils</h3>
+                        <div class="skills__tags">
+                            <span class="skills__tag">React.js</span>
+                            <span class="skills__tag">Node.js</span>
+                            <span class="skills__tag">Bootstrap</span>
+                            <span class="skills__tag">Tailwind CSS</span>
+                            <span class="skills__tag">Git & Github</span>
+                            <span class="skills__tag">Docker</span>
                         </div>
                     </div>
                 </div>
@@ -689,282 +1435,6 @@
             });
         });
     </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
-                </div>
-            </div>
-        </section>
-
-        <!-- About section -->
-        <section id="about" class="about">
-            <div class="container">
-                <div class="about__content">
-                    <div class="about__text scroll-reveal">
-                        <h2 class="section-title">Salut ! Je suis <span>Maël</span></h2>
-                        <p class="about__description">
-                            Je suis un développeur web passionné, actuellement étudiant à l'EFREI. J'adore créer des projets dynamiques et innovants, tout en garantissant des solutions modernes, optimisées, et une expérience utilisateur fluide.
-                        </p>
-                        <div class="about__cards">
-                            <div class="card card--flip netflix-zoom">
-                                <div class="card__inner">
-                                    <div class="card__front">
-                                        <i class="fas fa-code"></i>
-                                        <h3>Création de sites web</h3>
-                                    </div>
-                                    <div class="card__back">
-                                        <p>HTML, CSS, JavaScript</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card card--flip netflix-zoom">
-                                <div class="card__inner">
-                                    <div class="card__front">
-                                        <i class="fas fa-laptop-code"></i>
-                                        <h3>Applications web</h3>
-                                    </div>
-                                    <div class="card__back">
-                                        <p>Fonctionnalités dynamiques et réactives</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card card--flip netflix-zoom">
-                                <div class="card__inner">
-                                    <div class="card__front">
-                                        <i class="fas fa-lock"></i>
-                                        <h3>Authentification</h3>
-                                    </div>
-                                    <div class="card__back">
-                                        <p>Sécurité et gestion des utilisateurs</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card card--flip netflix-zoom">
-                                <div class="card__inner">
-                                    <div class="card__front">
-                                        <i class="fas fa-paint-brush"></i>
-                                        <h3>Optimisation UX/UI</h3>
-                                    </div>
-                                    <div class="card__back">
-                                        <p>Design centré sur l'utilisateur</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card card--flip netflix-zoom">
-                                <div class="card__inner">
-                                    <div class="card__front">
-                                        <i class="fas fa-mobile-alt"></i>
-                                        <h3>Responsive Design</h3>
-                                    </div>
-                                    <div class="card__back">
-                                        <p>Adaptation pour une expérience mobile parfaite</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="about__image scroll-reveal animate--delay-2">
-                        <div class="profile-frame glare-effect">
-                            <!-- Remplacez par votre photo -->
-                            <div class="profile-placeholder">
-                                <span>MB</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience section -->
-        <section class="experience">
-            <div class="container">
-                <h2 class="section-title">Expérience</h2>
-                <div class="timeline">
-                    <div class="timeline__item scroll-reveal">
-                        <div class="timeline__content netflix-zoom">
-                            <h3>EFREI Paris</h3>
-                            <p class="timeline__subtitle">Formation en Ingénierie Numérique et Informatique</p>
-                            <ul class="timeline__list">
-                                <li>Création de sites web sur mesure (HTML, CSS, JavaScript)</li>
-                                <li>Développement d'applications web interactives</li>
-                                <li>Intégration de systèmes d'authentification</li>
-                                <li>Optimisation de l'expérience utilisateur (UX/UI)</li>
-                                <li>Adaptation de sites pour mobiles (Responsive Design)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Featured Projects section (style Netflix) -->
-        <section class="featured-projects">
-            <div class="container">
-                <h2 class="section-title netflix-title-animation">Projets à la une</h2>
-                <div class="netflix-row">
-                    <h3 class="netflix-row__title">Mes projets récents</h3>
-                    <div class="netflix-row__container">
-                        <div class="netflix-card">
-                            <div class="netflix-card__image">
-                                <img src="assets/images/project1.jpg" alt="Projet 1" data-src="assets/images/project1.jpg">
-                                <div class="netflix-card__overlay">
-                                    <div class="netflix-card__content">
-                                        <h4>Application E-commerce</h4>
-                                        <div class="netflix-card__tech">
-                                            <span>React.js</span>
-                                            <span>Node.js</span>
-                                        </div>
-                                        <p>Une plateforme e-commerce complète avec panier et paiement</p>
-                                        <a href="#" class="btn btn--primary btn--small">Voir plus</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="netflix-card">
-                            <div class="netflix-card__image">
-                                <img src="assets/images/project2.jpg" alt="Projet 2" data-src="assets/images/project2.jpg">
-                                <div class="netflix-card__overlay">
-                                    <div class="netflix-card__content">
-                                        <h4>Application Mobile Fitness</h4>
-                                        <div class="netflix-card__tech">
-                                            <span>React Native</span>
-                                            <span>Firebase</span>
-                                        </div>
-                                        <p>Application de suivi d'entraînement personnalisé</p>
-                                        <a href="#" class="btn btn--primary btn--small">Voir plus</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="netflix-card">
-                            <div class="netflix-card__image">
-                                <img src="assets/images/project3.jpg" alt="Projet 3" data-src="assets/images/project3.jpg">
-                                <div class="netflix-card__overlay">
-                                    <div class="netflix-card__content">
-                                        <h4>Dashboard Analytique</h4>
-                                        <div class="netflix-card__tech">
-                                            <span>JavaScript</span>
-                                            <span>D3.js</span>
-                                        </div>
-                                        <p>Tableau de bord interactif pour visualiser des données</p>
-                                        <a href="#" class="btn btn--primary btn--small">Voir plus</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="netflix-row">
-                    <h3 class="netflix-row__title">Projets en vedette</h3>
-                    <div class="netflix-row__container">
-                        <div class="netflix-card netflix-card--featured">
-                            <div class="netflix-card__image">
-                                <img src="assets/images/featured-project.jpg" alt="Projet vedette" data-src="assets/images/featured-project.jpg">
-                                <div class="netflix-card__overlay">
-                                    <div class="netflix-card__content">
-                                        <h4>Portfolio Interactif</h4>
-                                        <div class="netflix-card__tech">
-                                            <span>HTML5</span>
-                                            <span>SASS</span>
-                                            <span>JavaScript</span>
-                                        </div>
-                                        <p>Mon portfolio personnel avec des animations avancées et une expérience utilisateur immersive inspirée de Netflix.</p>
-                                        <a href="#" class="btn btn--primary">Voir le projet</a>
-                                        <a href="https://github.com/Traxxouu" class="btn btn--secondary">Code source</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="netflix-cta">
-                    <a href="projets.html" class="btn btn--large btn--primary">Voir tous mes projets</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills section -->
-        <section class="skills">
-            <div class="container">
-                <h2 class="section-title">Compétences</h2>
-                <div class="skills__grid">
-                    <div class="skills__category scroll-reveal">
-                        <h3>Langages</h3>
-                        <div class="skills__items">
-                            <div class="skill">
-                                <span class="skill__name">HTML</span>
-                                <div class="skill__bar">
-                                    <div class="skill__level" style="width: 90%"></div>
-                                </div>
-                            </div>
-                            <div class="skill">
-                                <span class="skill__name">CSS</span>
-                                <div class="skill__bar">
-                                    <div class="skill__level" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            <div class="skill">
-                                <span class="skill__name">JavaScript</span>
-                                <div class="skill__bar">
-                                    <div class="skill__level" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            <div class="skill">
-                                <span class="skill__name">PHP</span>
-                                <div class="skill__bar">
-                                    <div class="skill__level" style="width: 75%"></div>
-                                </div>
-                            </div>
-                            <div class="skill">
-                                <span class="skill__name">Python</span>
-                                <div class="skill__bar">
-                                    <div class="skill__level" style="width: 70%"></div>
-                                </div>
-                            </div>
-                            <div class="skill">
-                                <span class="skill__name">SQL</span>
-                                <div class="skill__bar">
-                                    <div class="skill__level" style="width: 75%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skills__category scroll-reveal animate--delay-2">
-                        <h3>Frameworks & Outils</h3>
-                        <div class="skills__items">
-                            <div class="skill">
-                                <span class="skill__name">React.js</span>
-                                <div class="skill__bar">
-                                    <div class="skill__level" style="width: 75%"></div>
-                                </div>
-                            </div>
-                            <div class="skill">
-                                <span class="skill__name">Node.js</span>
-                                <div class="skill__bar">
-                                    <div class="skill__level" style="width: 70%"></div>
-                                </div>
-                            </div>
-                            <div class="skill">
-                                <span class="skill__name">Bootstrap</span>
-                                <div class="skill__bar">
-                                    <div class="skill__level" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            <div class="skill">
-                                <span class="skill__name">Tailwind CSS</span>
-                                <div class="skill__bar">
-                                    <div class="skill__level" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            <div class="skill">
-                                <span class="skill__name">Git & Github</span>
-                                <div class="skill__bar">
-                                    <div class="skill__level" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            <div class="skill">
-                                <span class="skill__name">Docker</span>
-                                <div class="skill__bar">
-                                    <div class="skill__level" style="width: 65%"></div>
-                                </div>
-                            </div>
-                        </div>
