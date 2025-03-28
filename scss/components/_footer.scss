@@ -1,0 +1,136 @@
+@import '../variables';
+
+// Style du footer à la Netflix
+.footer {
+  background-color: $background-color; // Plus foncé comme Netflix
+  padding: $spacing-4xl 0 $spacing-2xl;
+  position: relative;
+  
+  // Supprimer la barre rouge du haut pour plus de fidélité à Netflix
+  &::before {
+    display: none; 
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column; // Netflix utilise une disposition en colonnes
+    gap: $spacing-xl;
+    
+    @include sm {
+      text-align: center;
+    }
+  }
+  
+  &__logo {
+    .logo {
+      font-family: $font-secondary;
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      color: $primary-color;
+      display: inline-block;
+      margin-bottom: $spacing-sm;
+    }
+    
+    p {
+      color: $text-color-secondary;
+      font-size: $font-size-sm;
+    }
+  }
+  
+  &__links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $spacing-lg $spacing-2xl;
+    margin: $spacing-xl 0;
+    
+    @include md {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    @include sm {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $spacing-lg;
+    }
+    
+    @include xs {
+      grid-template-columns: 1fr;
+    }
+    
+    a {
+      color: $text-color-secondary;
+      font-size: $font-size-sm;
+      transition: color $transition-medium;
+      line-height: 2;
+      
+      &:hover {
+        color: $text-color;
+        text-decoration: underline; // Netflix ajoute un soulignement au hover
+      }
+    }
+  }
+  
+  &__social {
+    display: flex;
+    gap: $spacing-lg;
+    
+    a {
+      color: $text-color;
+      font-size: $font-size-xl;
+      transition: all $transition-medium;
+      
+      &:hover {
+        color: $primary-color;
+        transform: translateY(-2px); // Effet plus subtil
+      }
+    }
+  }
+  
+  &__copyright {
+    width: 100%;
+    margin-top: $spacing-xl;
+    color: $text-color-secondary;
+    font-size: $font-size-xs; // Plus petit comme Netflix
+    
+    p {
+      margin-bottom: $spacing-xs;
+    }
+    
+    a {
+      color: $text-color-secondary;
+      
+      &:hover {
+        color: $text-color;
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  // Language selector (style Netflix)
+  &__language {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid $text-color-secondary;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-sm;
+    margin-bottom: $spacing-md;
+    
+    i {
+      margin-right: $spacing-xs;
+      font-size: $font-size-sm;
+    }
+    
+    select {
+      background-color: transparent;
+      border: none;
+      color: $text-color-secondary;
+      font-size: $font-size-sm;
+      cursor: pointer;
+      outline: none;
+      
+      option {
+        background-color: $background-color;
+        color: $text-color;
+      }
+    }
+  }
+}

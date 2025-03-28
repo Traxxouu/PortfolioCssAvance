@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maël Barbe | Développeur Web & Application</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Intro animation styles */
+        .netflix-intro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .netflix-intro .letter {
+            color: #e50914;
+            font-size: 25vw;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+            animation: netflixIntro 4s ease-out forwards;
+            opacity: 0;
+            transform: scale(1.5);
+        }
+        @keyframes netflixIntro {
+            0% {
+                opacity: 0;
+                transform: scale(1.5);
+            }
+            20% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            80% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+        }
+        .netflix-intro .shine {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.1) 40%, 
+                rgba(255, 255, 255, 0.3) 50%, 
+                rgba(255, 255, 255, 0.1) 60%, 
+                transparent 100%);
+            animation: shine 2s ease-in-out 1s;
+            opacity: 0;
+            transform: skewX(-20deg);
+        }
+        @keyframes shine {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%) skewX(-20deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(100%) skewX(-20deg);
+            }
+        }
+        .loader {
+            position: absolute;
+            bottom: 20%;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            font-size: 1rem;
+            opacity: 0;
+            animation: fadeIn 2s ease-in 1s forwards;
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        .loader__bar {
+            width: 200px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 10px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 3px;
+        }
+        .loader__progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background: #e50914;
+            animation: loading 3s ease-in-out forwards;
+        }
+        @keyframes loading {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        /* Animation M */
+        .m-intro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .m-intro__letter {
+            color: #e50914;
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 25vw;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+            animation: mIntro 4s ease-out forwards;
+            opacity: 0;
+            transform: scale(1.5);
+        }
+
+        .m-intro__shine {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.1) 40%, 
+                rgba(255, 255, 255, 0.3) 50%, 
+                rgba(255, 255, 255, 0.1) 60%, 
+                transparent 100%);
+            animation: shine 2s ease-in-out 1s;
+            opacity: 0;
+            transform: skewX(-20deg);
+        }
+
+        @keyframes mIntro {
+            0% {
+                opacity: 0;
+                transform: scale(1.5);
+            }
+            20% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            80% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+        }
+
+        /* Styles pour la page de sélection de profil Netflix */
+        .profiles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #141414;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 9990;
+        }
+        
+        .profiles-title {
+            font-size: 3.5vw;
+            color: #fff;
+            margin-bottom: 4vw;
+            text-align: center;
+            font-family: "Bebas Neue", sans-serif;
+        }
+        
+        .profiles-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2vw;
+            max-width: 1200px;
+        }
+        
+        .profile {
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInProfile 0.5s ease forwards;
+        }
+        
+        @keyframes fadeInProfile {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .profile:nth-child(2) { animation-delay: 0.1s; }
+        .profile:nth-child(3) { animation-delay: 0.2s; }
+        .profile:nth-child(4) { animation-delay: 0.3s; }
+        .profile:nth-child(5) { animation-delay: 0.4s; }
+        
+        .profile:hover {
+            transform: scale(1.1);
+        }
+        
+        .profile:hover .profile-avatar {
+            border: 3px solid white;
+        }
+        
+        .profile-avatar {
+            width: 10vw;
+            height: 10vw;
+            max-width: 200px;
+            max-height: 200px;
+            min-width: 84px;
+            min-height: 84px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1vw;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #333;
+            color: #e50914;
+            font-size: 5vw;
+            font-weight: bold;
+        }
+        
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-name {
+            color: #999;
+            font-size: 1.3vw;
+            transition: all 0.3s ease;
+        }
+        
+        .profile:hover .profile-name {
+            color: white;
+        }
+        
+        .add-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        
+        .add-profile:hover {
+            opacity: 1;
+        }
+        
+        .add-profile .profile-avatar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            border: 1px solid #666;
+        }
+        
+        .add-profile .profile-avatar i {
+            font-size: 4vw;
+            color: #666;
+        }
+        
+        .add-profile:hover .profile-avatar {
+            border-color: #999;
+        }
+        
+        .manage-profiles {
+            margin-top: 5vw;
+            padding: 0.7vw 1.5vw;
+            background: transparent;
+            color: #999;
+            border: 1px solid #999;
+            font-size: 1.2vw;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .manage-profiles:hover {
+            color: white;
+            border-color: white;
+        }
+        
+        .profile-avatar.mb {
+            background: #e50914;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .profiles-title {
+                font-size: 24px;
+                margin-bottom: 32px;
+            }
+            
+            .profile-avatar {
+                width: 84px;
+                height: 84px;
+                margin-bottom: 8px;
+            }
+            
+            .profile-name {
+                font-size: 14px;
+            }
+            
+            .manage-profiles {
+                margin-top: 40px;
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            
+            .profile-avatar .mb {
+                font-size: 32px;
+            }
+            
+            .add-profile .profile-avatar i {
+                font-size: 24px;
+            }
+        }
+        
+        /* Animation de fondu pour l'effet de transition entre pages */
+        .fade-out {
+            animation: fadeOut 0.5s ease forwards;
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Écran de sélection de profil (style Netflix) -->
+    <div class="profiles-container" id="profiles-screen">
+        <h1 class="profiles-title">Qui est-ce ?</h1>
+        
+        <div class="profiles-list">
+            <!-- Profil principal -->
+            <div class="profile" onclick="selectProfile('Maël Barbe')">
+                <div class="profile-avatar mb">
+                    <span>MB</span>
+                </div>
+                <div class="profile-name">Maël Barbe</div>
+            </div>
+            
+            <!-- Profils supplémentaires (exemples) -->
+            <div class="profile" onclick="selectProfile('Invité')">
+                <div class="profile-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="profile-name">Invité</div>
+            </div>
+            
+            <!-- Bouton Ajouter un profil -->
+            <div class="profile add-profile">
+                <div class="profile-avatar">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="profile-name">Ajouter un profil</div>
+            </div>
+        </div>
+        
+        <button class="manage-profiles">Gérer les profils</button>
+    </div>
+
+    <!-- M Intro Animation -->
+    <div class="m-intro" id="m-intro" style="display: none;">
+        <div class="m-intro__letter">M</div>
+        <div class="m-intro__shine"></div>
+    </div>
+
+    <!-- Main content -->
+    <div id="main-content" style="display: none;">
+        <!-- Header avec navigation -->
+        <header class="header">
+            <div class="header__logo">
+                <a href="index.html" class="logo netflix-title-animation">MB</a>
+            </div>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link active">Accueil</a></li>
+                    <li class="nav__item"><a href="projets.html" class="nav__link">Projets</a></li>
+                    <li class="nav__item"><a href="reseaux.html" class="nav__link">Réseaux</a></li>
+                    <li class="nav__item"><a href="carte-numerique.html" class="nav__link">Carte Numérique</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+
+        <!-- Hero section -->
+        <section class="hero">
+            <div class="hero__content">
+                <div class="hero__titles parallax-element" data-speed="0.1">
+                    <h1 class="hero__name">Maël Barbe</h1>
+                    <h2 class="hero__job">Développeur Web & Application</h2>
+                    <p class="hero__tagline">Passionné de Technologie et d'Innovation</p>
+                </div>
+                <div class="hero__cta">
+                    <a href="#about" class="btn btn--primary btn--glow">En savoir plus</a>
+                    <a href="projets.html" class="btn btn--secondary">Voir mes projets</a>
+                </div>
+            </div>
+            <div class="hero__bg parallax-element" data-speed="-0.05">
+                <div class="hero__overlay"></div>
+            </div>
+            
+            <!-- Indicateur de défilement -->
+            <div class="scroll-indicator animate--bounce">
+                <i class="fas fa-chevron-down scroll-indicator__icon"></i>
+            </div>
+        </section>
+
+        <!-- Catégories populaires (style Netflix) -->
+        <section class="netflix-categories">
+            <div class="container">
+                <h2 class="netflix-categories__title">Mes compétences</h2>
+                <div class="film-strip" data-speed="30">
+                    <div class="film-strip__container">
+                        <div class="film-strip__item">
+                            <div class="skill-card">
+                                <i class="fab fa-html5"></i>
+                                <span>HTML5</span>
+                            </div>
+                        </div>
+                        <div class="film-strip__item">
+                            <div class="skill-card">
+                                <i class="fab fa-css3-alt"></i>
+                                <span>CSS3</span>
+                            </div>
+                        </div>
+                        <div class="film-strip__item">
+                            <div class="skill-card">
+                                <i class="fab fa-js"></i>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                        <div class="film-strip__item">
+                            <div class="skill-card">
+                                <i class="fab fa-react"></i>
+                                <span>React.js</span>
+                            </div>
+                        </div>
+                        <div class="film-strip__item">
+                            <div class="skill-card">
+                                <i class="fab fa-node-js"></i>
+                                <span>Node.js</span>
+                            </div>
+                        </div>
+                        <div class="film-strip__item">
+                            <div class="skill-card">
+                                <i class="fab fa-bootstrap"></i>
+                                <span>Bootstrap</span>
+                            </div>
+                        </div>
+                        <div class="film-strip__item">
+                            <div class="skill-card">
+                                <i class="fab fa-sass"></i>
+                                <span>SASS</span>
+                            </div>
+                        </div>
+                        <div class="film-strip__item">
+                            <div class="skill-card">
+                                <i class="fab fa-php"></i>
+                                <span>PHP</span>
+                            </div>
+                        </div>
+                        <div class="film-strip__item">
+                            <div class="skill-card">
+                                <i class="fab fa-github"></i>
+                                <span>Git & Github</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact section -->
+        <section class="contact">
+            <div class="container">
+                <h2 class="section-title">Contactez-moi</h2>
+                <p class="contact__intro">Pour discuter de nouveaux projets ou collaborations, vous pouvez me contacter :</p>
+                <div class="contact__methods">
+                    <a href="mailto:pro.mael.dev@gmail.com" class="contact__method netflix-zoom">
+                        <i class="fas fa-envelope"></i>
+                        <span>Envoyer un e-mail</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/maël-barbe-745566309/" class="contact__method netflix-zoom" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section (style Netflix) -->
+        <section class="netflix-billboard">
+            <div class="netflix-billboard__bg" style="background-image: url('assets/images/cta-bg.jpg');">
+                <div class="netflix-billboard__overlay"></div>
+            </div>
+            <div class="container">
+                <div class="netflix-billboard__content">
+                    <h2 class="netflix-billboard__title">Prêt à collaborer ?</h2>
+                    <p class="netflix-billboard__text">Travaillons ensemble pour donner vie à votre prochain projet</p>
+                    <a href="mailto:pro.mael.dev@gmail.com" class="btn btn--large btn--primary btn--pulse">Commencer un projet</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__content">
+                    <div class="footer__logo">
+                        <a href="index.html" class="logo">MB</a>
+                        <p>Développeur Web & Application</p>
+                    </div>
+                    <div class="footer__social">
+                        <a href="https://www.instagram.com/maelrls/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://github.com/Traxxouu" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/maël-barbe-745566309/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <div class="footer__copyright">
+                        <p>&copy; 2025 Maël Barbe. Tous droits réservés.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bouton Retour en haut -->
+        <button class="scroll-top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Vérifier si c'est la première visite
+            const hasVisited = sessionStorage.getItem('hasVisited');
+            const profilesScreen = document.getElementById('profiles-screen');
+            const mIntro = document.getElementById('m-intro');
+            const mainContent = document.getElementById('main-content');
+            
+            // Fonction pour sélectionner un profil
+            window.selectProfile = function(profileName) {
+                // Marquer que l'utilisateur a visité le site
+                sessionStorage.setItem('hasVisited', 'true');
+                
+                // Stocker le profil sélectionné
+                localStorage.setItem('selectedProfile', profileName);
+                
+                // Masquer l'écran de profils avec une animation
+                profilesScreen.classList.add('fade-out');
+                
+                // Afficher l'animation M après un délai
+                setTimeout(() => {
+                    profilesScreen.style.display = 'none';
+                    mIntro.style.display = 'flex';
+                    
+                    // Afficher le contenu principal après l'animation M
+                    setTimeout(() => {
+                        mIntro.style.display = 'none';
+                        mainContent.style.display = 'block';
+                    }, 4500); // Durée de l'animation M
+                    
+                }, 500); // Délai après la disparition de l'écran de profils
+            };
+            
+            // Si l'utilisateur a déjà visité le site durant cette session,
+            // passer directement au contenu principal
+            if (hasVisited) {
+                profilesScreen.style.display = 'none';
+                mainContent.style.display = 'block';
+            }
+            
+            // Le reste de votre code JavaScript
+            const header = document.querySelector('.header');
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('.nav');
+            const scrollElements = document.querySelectorAll('.scroll-reveal');
+            const scrollTopBtn = document.querySelector('.scroll-top');
+            
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                
+                // Reveal elements on scroll
+                scrollElements.forEach(element => {
+                    if (isElementInViewport(element)) {
+                        element.classList.add('revealed');
+                    }
+                });
+                
+                // Show/hide scroll-to-top button
+                if (window.scrollY > 300) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+            });
+            
+            // Mobile menu toggle
+            if (hamburger && nav) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    nav.classList.toggle('active');
+                    document.body.classList.toggle('nav-open');
+                });
+            }
+            
+            // Scroll to top button
+            if (scrollTopBtn) {
+                scrollTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            
+            // Check if element is in viewport
+            function isElementInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8
+                );
+            }
+            
+            // Initialize scroll reveal
+            scrollElements.forEach(element => {
+                if (isElementInViewport(element)) {
+                    element.classList.add('revealed');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+                </div>
+            </div>
+        </section>
+
+        <!-- About section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about__content">
+                    <div class="about__text scroll-reveal">
+                        <h2 class="section-title">Salut ! Je suis <span>Maël</span></h2>
+                        <p class="about__description">
+                            Je suis un développeur web passionné, actuellement étudiant à l'EFREI. J'adore créer des projets dynamiques et innovants, tout en garantissant des solutions modernes, optimisées, et une expérience utilisateur fluide.
+                        </p>
+                        <div class="about__cards">
+                            <div class="card card--flip netflix-zoom">
+                                <div class="card__inner">
+                                    <div class="card__front">
+                                        <i class="fas fa-code"></i>
+                                        <h3>Création de sites web</h3>
+                                    </div>
+                                    <div class="card__back">
+                                        <p>HTML, CSS, JavaScript</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card--flip netflix-zoom">
+                                <div class="card__inner">
+                                    <div class="card__front">
+                                        <i class="fas fa-laptop-code"></i>
+                                        <h3>Applications web</h3>
+                                    </div>
+                                    <div class="card__back">
+                                        <p>Fonctionnalités dynamiques et réactives</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card--flip netflix-zoom">
+                                <div class="card__inner">
+                                    <div class="card__front">
+                                        <i class="fas fa-lock"></i>
+                                        <h3>Authentification</h3>
+                                    </div>
+                                    <div class="card__back">
+                                        <p>Sécurité et gestion des utilisateurs</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card--flip netflix-zoom">
+                                <div class="card__inner">
+                                    <div class="card__front">
+                                        <i class="fas fa-paint-brush"></i>
+                                        <h3>Optimisation UX/UI</h3>
+                                    </div>
+                                    <div class="card__back">
+                                        <p>Design centré sur l'utilisateur</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card--flip netflix-zoom">
+                                <div class="card__inner">
+                                    <div class="card__front">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <h3>Responsive Design</h3>
+                                    </div>
+                                    <div class="card__back">
+                                        <p>Adaptation pour une expérience mobile parfaite</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about__image scroll-reveal animate--delay-2">
+                        <div class="profile-frame glare-effect">
+                            <!-- Remplacez par votre photo -->
+                            <div class="profile-placeholder">
+                                <span>MB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience section -->
+        <section class="experience">
+            <div class="container">
+                <h2 class="section-title">Expérience</h2>
+                <div class="timeline">
+                    <div class="timeline__item scroll-reveal">
+                        <div class="timeline__content netflix-zoom">
+                            <h3>EFREI Paris</h3>
+                            <p class="timeline__subtitle">Formation en Ingénierie Numérique et Informatique</p>
+                            <ul class="timeline__list">
+                                <li>Création de sites web sur mesure (HTML, CSS, JavaScript)</li>
+                                <li>Développement d'applications web interactives</li>
+                                <li>Intégration de systèmes d'authentification</li>
+                                <li>Optimisation de l'expérience utilisateur (UX/UI)</li>
+                                <li>Adaptation de sites pour mobiles (Responsive Design)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects section (style Netflix) -->
+        <section class="featured-projects">
+            <div class="container">
+                <h2 class="section-title netflix-title-animation">Projets à la une</h2>
+                <div class="netflix-row">
+                    <h3 class="netflix-row__title">Mes projets récents</h3>
+                    <div class="netflix-row__container">
+                        <div class="netflix-card">
+                            <div class="netflix-card__image">
+                                <img src="assets/images/project1.jpg" alt="Projet 1" data-src="assets/images/project1.jpg">
+                                <div class="netflix-card__overlay">
+                                    <div class="netflix-card__content">
+                                        <h4>Application E-commerce</h4>
+                                        <div class="netflix-card__tech">
+                                            <span>React.js</span>
+                                            <span>Node.js</span>
+                                        </div>
+                                        <p>Une plateforme e-commerce complète avec panier et paiement</p>
+                                        <a href="#" class="btn btn--primary btn--small">Voir plus</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="netflix-card">
+                            <div class="netflix-card__image">
+                                <img src="assets/images/project2.jpg" alt="Projet 2" data-src="assets/images/project2.jpg">
+                                <div class="netflix-card__overlay">
+                                    <div class="netflix-card__content">
+                                        <h4>Application Mobile Fitness</h4>
+                                        <div class="netflix-card__tech">
+                                            <span>React Native</span>
+                                            <span>Firebase</span>
+                                        </div>
+                                        <p>Application de suivi d'entraînement personnalisé</p>
+                                        <a href="#" class="btn btn--primary btn--small">Voir plus</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="netflix-card">
+                            <div class="netflix-card__image">
+                                <img src="assets/images/project3.jpg" alt="Projet 3" data-src="assets/images/project3.jpg">
+                                <div class="netflix-card__overlay">
+                                    <div class="netflix-card__content">
+                                        <h4>Dashboard Analytique</h4>
+                                        <div class="netflix-card__tech">
+                                            <span>JavaScript</span>
+                                            <span>D3.js</span>
+                                        </div>
+                                        <p>Tableau de bord interactif pour visualiser des données</p>
+                                        <a href="#" class="btn btn--primary btn--small">Voir plus</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="netflix-row">
+                    <h3 class="netflix-row__title">Projets en vedette</h3>
+                    <div class="netflix-row__container">
+                        <div class="netflix-card netflix-card--featured">
+                            <div class="netflix-card__image">
+                                <img src="assets/images/featured-project.jpg" alt="Projet vedette" data-src="assets/images/featured-project.jpg">
+                                <div class="netflix-card__overlay">
+                                    <div class="netflix-card__content">
+                                        <h4>Portfolio Interactif</h4>
+                                        <div class="netflix-card__tech">
+                                            <span>HTML5</span>
+                                            <span>SASS</span>
+                                            <span>JavaScript</span>
+                                        </div>
+                                        <p>Mon portfolio personnel avec des animations avancées et une expérience utilisateur immersive inspirée de Netflix.</p>
+                                        <a href="#" class="btn btn--primary">Voir le projet</a>
+                                        <a href="https://github.com/Traxxouu" class="btn btn--secondary">Code source</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="netflix-cta">
+                    <a href="projets.html" class="btn btn--large btn--primary">Voir tous mes projets</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills section -->
+        <section class="skills">
+            <div class="container">
+                <h2 class="section-title">Compétences</h2>
+                <div class="skills__grid">
+                    <div class="skills__category scroll-reveal">
+                        <h3>Langages</h3>
+                        <div class="skills__items">
+                            <div class="skill">
+                                <span class="skill__name">HTML</span>
+                                <div class="skill__bar">
+                                    <div class="skill__level" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span class="skill__name">CSS</span>
+                                <div class="skill__bar">
+                                    <div class="skill__level" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span class="skill__name">JavaScript</span>
+                                <div class="skill__bar">
+                                    <div class="skill__level" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span class="skill__name">PHP</span>
+                                <div class="skill__bar">
+                                    <div class="skill__level" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span class="skill__name">Python</span>
+                                <div class="skill__bar">
+                                    <div class="skill__level" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span class="skill__name">SQL</span>
+                                <div class="skill__bar">
+                                    <div class="skill__level" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skills__category scroll-reveal animate--delay-2">
+                        <h3>Frameworks & Outils</h3>
+                        <div class="skills__items">
+                            <div class="skill">
+                                <span class="skill__name">React.js</span>
+                                <div class="skill__bar">
+                                    <div class="skill__level" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span class="skill__name">Node.js</span>
+                                <div class="skill__bar">
+                                    <div class="skill__level" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span class="skill__name">Bootstrap</span>
+                                <div class="skill__bar">
+                                    <div class="skill__level" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span class="skill__name">Tailwind CSS</span>
+                                <div class="skill__bar">
+                                    <div class="skill__level" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span class="skill__name">Git & Github</span>
+                                <div class="skill__bar">
+                                    <div class="skill__level" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span class="skill__name">Docker</span>
+                                <div class="skill__bar">
+                                    <div class="skill__level" style="width: 65%"></div>
+                                </div>
+                            </div>
+                        </div>
