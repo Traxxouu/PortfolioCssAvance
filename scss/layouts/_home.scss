@@ -1,0 +1,390 @@
+@import '../variables';
+
+// Styles pour la page d'accueil
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  overflow: hidden;
+  
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../assets/images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 30%;
+      background: linear-gradient(to top, $background-color 0%, transparent 100%);
+    }
+  }
+  
+  &__content {
+    width: 100%;
+    max-width: 800px;
+    padding: 0 $spacing-xl;
+    margin-left: 5%;
+    z-index: 1;
+    
+    @include sm {
+      margin-left: 0;
+      padding: 0 $spacing-md;
+      text-align: center;
+    }
+  }
+  
+  &__titles {
+    margin-bottom: $spacing-xl;
+  }
+  
+  &__name {
+    font-family: $font-secondary;
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-xs;
+    animation: fadeIn 0.8s ease forwards;
+    
+    @include sm {
+      font-size: $font-size-3xl;
+    }
+  }
+  
+  &__job {
+    font-family: $font-primary;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-medium;
+    color: $primary-color;
+    margin-bottom: $spacing-sm;
+    animation: fadeIn 0.8s ease forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+    
+    @include sm {
+      font-size: $font-size-lg;
+    }
+  }
+  
+  &__tagline {
+    font-size: $font-size-lg;
+    color: $text-color-secondary;
+    animation: fadeIn 0.8s ease forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+    
+    @include sm {
+      font-size: $font-size-base;
+    }
+  }
+  
+  &__cta {
+    display: flex;
+    gap: $spacing-md;
+    animation: fadeIn 0.8s ease forwards;
+    animation-delay: 0.6s;
+    opacity: 0;
+    
+    @include sm {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+// Featured projects section
+.featured-projects {
+  padding: $spacing-4xl 0;
+  
+  .section-title {
+    margin-bottom: $spacing-2xl;
+  }
+  
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: $spacing-xl;
+    
+    @include sm {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// Animation de scrolling
+.scroll-indicator {
+  position: absolute;
+  bottom: $spacing-xl;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  opacity: 0.8;
+  animation: bounce 2s infinite;
+  
+  &__icon {
+    font-size: $font-size-2xl;
+    color: $text-color;
+  }
+}
+
+// Effet de parallaxe pour les sections
+.parallax-section {
+  position: relative;
+  min-height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: $spacing-4xl 0;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($background-color, 0.8);
+    z-index: 0;
+  }
+  
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  &__title {
+    color: $text-color;
+    font-size: $font-size-3xl;
+    margin-bottom: $spacing-xl;
+    text-align: center;
+    
+    @include sm {
+      font-size: $font-size-2xl;
+    }
+  }
+  
+  &__content {
+    color: $text-color-secondary;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    
+    p {
+      margin-bottom: $spacing-lg;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// Section CTA
+.cta-section {
+  background-color: $tertiary-color;
+  padding: $spacing-3xl 0;
+  text-align: center;
+  
+  &__title {
+    font-size: $font-size-2xl;
+    margin-bottom: $spacing-lg;
+    
+    @include sm {
+      font-size: $font-size-xl;
+    }
+  }
+  
+  &__subtitle {
+    color: $text-color-secondary;
+    max-width: 700px;
+    margin: 0 auto $spacing-xl;
+  }
+  
+  .btn {
+    min-width: 200px;
+  }
+}
+
+// Statistiques du projet
+.stats {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: $spacing-xl;
+  margin: $spacing-3xl 0;
+  
+  &__item {
+    text-align: center;
+    
+    @include sm {
+      width: 100%;
+      margin-bottom: $spacing-lg;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  &__number {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    color: $primary-color;
+    margin-bottom: $spacing-xs;
+    display: block;
+    
+    @include sm {
+      font-size: $font-size-2xl;
+    }
+  }
+  
+  &__label {
+    color: $text-color-secondary;
+    font-size: $font-size-sm;
+  }
+}
+
+// Intro Netflix en mini format
+.netflix-intro-mini {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeOut 1s ease 2.5s forwards;
+  
+  &__content {
+    position: relative;
+  }
+  
+  &__letter {
+    color: $primary-color;
+    font-family: $font-secondary;
+    font-size: 20vw;
+    font-weight: $font-weight-bold;
+    animation: netflixIntro 2.5s ease-out forwards;
+  }
+  
+  &__shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255, 255, 255, 0.1) 40%, 
+      rgba(255, 255, 255, 0.3) 50%, 
+      rgba(255, 255, 255, 0.1) 60%, 
+      transparent 100%);
+    animation: shine 1s ease-out 1s forwards;
+    opacity: 0;
+    transform: skewX(-20deg) translateX(-100%);
+  }
+}
+
+// Hero section avec effet parallaxe
+.hero {
+  &__bg {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.8) 100%);
+      z-index: 1;
+    }
+  }
+}
+
+// Animation for the "M" intro
+.m-intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+  &__letter {
+    color: $primary-color;
+    font-family: $font-secondary;
+    font-size: 25vw;
+    font-weight: $font-weight-bold;
+    text-shadow: 0 0 10px rgba($primary-color, 0.5);
+    animation: mIntro 4s ease-out forwards;
+    opacity: 0;
+    transform: scale(1.5);
+  }
+
+  &__shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255, 255, 255, 0.1) 40%, 
+      rgba(255, 255, 255, 0.3) 50%, 
+      rgba(255, 255, 255, 0.1) 60%, 
+      transparent 100%);
+    animation: shine 2s ease-in-out 1s;
+    opacity: 0;
+    transform: skewX(-20deg);
+  }
+}
+
+@keyframes mIntro {
+  0% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes shine {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%) skewX(-20deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(100%) skewX(-20deg);
+  }
+}

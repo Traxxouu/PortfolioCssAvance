@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets | Maël Barbe</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header avec navigation -->
+    <header class="header">
+        <div class="header__logo">
+            <a href="index.html" class="logo">MB</a>
+        </div>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="index.html" class="nav__link">Accueil</a></li>
+                <li class="nav__item"><a href="projets.html" class="nav__link active">Projets</a></li>
+                <li class="nav__item"><a href="reseaux.html" class="nav__link">Réseaux</a></li>
+                <li class="nav__item"><a href="carte-numerique.html" class="nav__link">Carte Numérique</a></li>
+            </ul>
+        </nav>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Projects hero -->
+    <section class="projects-hero">
+        <div class="container">
+            <h1 class="projects-hero__title">Mes Projets</h1>
+            <p class="projects-hero__subtitle">Découvrez quelques-unes de mes réalisations récentes</p>
+        </div>
+    </section>
+
+    <!-- Projects section -->
+    <section class="projects">
+        <div class="container">
+            <!-- Project Slider -->
+            <div class="project-slider">
+                <!-- Projet Minecraft YMT -->
+                <div class="project">
+                    <div class="project__preview">
+                        <div class="project__image">
+                            <div class="project__placeholder">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                        </div>
+                        <div class="project__overlay">
+                            <div class="project__content">
+                                <h2 class="project__title">Minecraft YMT</h2>
+                                <div class="project__tech">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>JavaScript</span>
+                                </div>
+                                <p class="project__description">
+                                    Site web officiel du serveur Minecraft YMT avec présentation, règlement et FAQ. Interface intuitive pour tous les joueurs.
+                                </p>
+                                <div class="project__actions">
+                                    <a href="https://minecraft-ymt.netlify.app" target="_blank" class="btn btn--primary">Voir le site</a>
+                                    <a href="https://github.com/Traxxouu/minecraft-ymt-site" target="_blank" class="btn btn--secondary">Voir le code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet Coche -->
+                <div class="project">
+                    <div class="project__preview">
+                        <div class="project__image">
+                            <div class="project__placeholder">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                        </div>
+                        <div class="project__overlay">
+                            <div class="project__content">
+                                <h2 class="project__title">Projet Coche</h2>
+                                <div class="project__tech">
+                                    <span>PHP</span>
+                                    <span>MySQL</span>
+                                    <span>HTML/CSS</span>
+                                </div>
+                                <p class="project__description">
+                                    Site de gestion de tâches avec authentification sécurisée et interface interactive. Optimisé pour mobile et desktop.
+                                </p>
+                                <div class="project__actions">
+                                    <a href="https://coche.rf.gd/?i=2" target="_blank" class="btn btn--primary">Voir le site</a>
+                                    <a href="https://github.com/Traxxouu/Projet-Coche" target="_blank" class="btn btn--secondary">Voir le code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SpotiClock -->
+                <div class="project">
+                    <div class="project__preview">
+                        <div class="project__image">
+                            <div class="project__placeholder">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                        </div>
+                        <div class="project__overlay">
+                            <div class="project__content">
+                                <h2 class="project__title">SpotiClock</h2>
+                                <div class="project__tech">
+                                    <span>Python</span>
+                                    <span>Tkinter</span>
+                                    <span>API Spotify</span>
+                                </div>
+                                <p class="project__description">
+                                    Application de bureau qui vous réveille avec vos playlists Spotify préférées. Interface intuitive et facile à configurer.
+                                </p>
+                                <div class="project__actions">
+                                    <a href="https://drive.google.com/drive/folders/1054aag31PHzy6whlDiGdEQSxHx3ira6K" target="_blank" class="btn btn--primary">Télécharger</a>
+                                    <a href="https://github.com/Traxxouu/SpotifyAlarm" target="_blank" class="btn btn--secondary">Voir le code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project navigation -->
+            <div class="project-nav">
+                <button class="project-nav__btn prev" aria-label="Projet précédent">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="project-nav__indicators">
+                    <span class="active"></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <button class="project-nav__btn next" aria-label="Projet suivant">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured project with grid -->
+    <section class="featured-project">
+        <div class="container">
+            <h2 class="section-title">Projet FuturE</h2>
+            <div class="featured-project__grid">
+                <div class="featured-project__image">
+                    <div class="featured-project__placeholder">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                </div>
+                <div class="featured-project__details">
+                    <h3 class="featured-project__title">Audyo</h3>
+                    <div class="featured-project__tech">
+                        <span>React.js</span>
+                        <span>Node.js</span>
+                        <span>IA</span>
+                    </div>
+                    <p class="featured-project__description">
+                        Audyo est un projet innovant visant à faciliter la création, l'édition et la diffusion de contenu audio à partir de texte, grâce à l'intelligence artificielle. Il s'adresse à tous ceux qui veulent produire rapidement des podcasts, voix off, ou récits audio sans compétences techniques avancées.
+                    </p>
+                    <div class="featured-project__highlights">
+                        <h4>Points forts :</h4>
+                        <ul>
+                            <li>Transformation de texte en audio avec IA</li>
+                            <li>Interface utilisateur intuitive</li>
+                            <li>Options d'édition avancées</li>
+                            <li>Différentes voix et styles disponibles</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- More projects CTA -->
+    <section class="more-projects">
+        <div class="container">
+            <h2 class="more-projects__title">Envie de voir plus ?</h2>
+            <p class="more-projects__text">Découvrez tous mes projets sur GitHub</p>
+            <a href="https://github.com/Traxxouu" class="btn btn--large" target="_blank">
+                <i class="fab fa-github"></i>
+                Visiter mon GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__logo">
+                    <a href="index.html" class="logo">MB</a>
+                    <p>Développeur Web & Application</p>
+                </div>
+                <div class="footer__social">
+                    <a href="https://www.instagram.com/maelrls/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/Traxxouu" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/maël-barbe-745566309/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <div class="footer__copyright">
+                    <p>&copy; 2025 Maël Barbe. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+.hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:flex-start;padding:0;overflow:hidden}.hero__bg{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url("../assets/images/hero-bg.jpg");background-size:cover;background-position:center;z-index:-1}.hero__bg::after{content:"";position:absolute;bottom:0;left:0;width:100%;height:30%;background:linear-gradient(to top, #0c0c0c 0%, transparent 100%)}.hero__content{width:100%;max-width:800px;padding:0 32px;margin-left:5%;z-index:1}@media(max-width: 768px){.hero__content{margin-left:0;padding:0 16px;text-align:center}}.hero__titles{margin-bottom:32px}.hero__name{font-family:"Bebas Neue",sans-serif;font-size:48px;font-weight:700;margin-bottom:4px;animation:fadeIn .8s ease forwards}@media(max-width: 768px){.hero__name{font-size:40px}}.hero__job{font-family:"Montserrat",sans-serif;font-size:24px;font-weight:500;color:#e50914;margin-bottom:8px;animation:fadeIn .8s ease forwards;animation-delay:.2s;opacity:0}@media(max-width: 768px){.hero__job{font-size:18px}}.hero__tagline{font-size:18px;color:#b3b3b3;animation:fadeIn .8s ease forwards;animation-delay:.4s;opacity:0}@media(max-width: 768px){.hero__tagline{font-size:16px}}.hero__cta{display:flex;gap:16px;animation:fadeIn .8s ease forwards;animation-delay:.6s;opacity:0}@media(max-width: 768px){.hero__cta{flex-direction:column;align-items:center}}.featured-projects{padding:80px 0}.featured-projects .section-title{margin-bottom:48px}.featured-projects__grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));gap:32px}@media(max-width: 768px){.featured-projects__grid{grid-template-columns:1fr}}.scroll-indicator{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;opacity:.8;animation:bounce 2s infinite}.scroll-indicator__icon{font-size:32px;color:#fff}.parallax-section{position:relative;min-height:400px;background-attachment:fixed;background-position:center;background-repeat:no-repeat;background-size:cover;padding:80px 0}.parallax-section::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(12,12,12,.8);z-index:0}.parallax-section .container{position:relative;z-index:1}.parallax-section__title{color:#fff;font-size:40px;margin-bottom:32px;text-align:center}@media(max-width: 768px){.parallax-section__title{font-size:32px}}.parallax-section__content{color:#b3b3b3;max-width:800px;margin:0 auto;text-align:center}.parallax-section__content p{margin-bottom:24px}.parallax-section__content p:last-child{margin-bottom:0}.cta-section{background-color:#2b2b2b;padding:64px 0;text-align:center}.cta-section__title{font-size:32px;margin-bottom:24px}@media(max-width: 768px){.cta-section__title{font-size:24px}}.cta-section__subtitle{color:#b3b3b3;max-width:700px;margin:0 auto 32px}.cta-section .btn{min-width:200px}.stats{display:flex;justify-content:space-around;flex-wrap:wrap;gap:32px;margin:64px 0}.stats__item{text-align:center}@media(max-width: 768px){.stats__item{width:100%;margin-bottom:24px}.stats__item:last-child{margin-bottom:0}}.stats__number{font-size:40px;font-weight:700;color:#e50914;margin-bottom:4px;display:block}@media(max-width: 768px){.stats__number{font-size:32px}}.stats__label{color:#b3b3b3;font-size:14px}.netflix-intro-mini{position:fixed;top:0;left:0;width:100%;height:100vh;background-color:#000;display:flex;justify-content:center;align-items:center;z-index:9999;animation:fadeOut 1s ease 2.5s forwards}.netflix-intro-mini__content{position:relative}.netflix-intro-mini__letter{color:#e50914;font-family:"Bebas Neue",sans-serif;font-size:20vw;font-weight:700;animation:netflixIntro 2.5s ease-out forwards}.netflix-intro-mini__shine{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.1) 60%, transparent 100%);animation:shine 1s ease-out 1s forwards;opacity:0;transform:skewX(-20deg) translateX(-100%)}.hero__bg::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at center, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%);z-index:1}.m-intro{position:fixed;top:0;left:0;width:100%;height:100vh;background-color:#000;display:flex;justify-content:center;align-items:center;z-index:9999}.m-intro__letter{color:#e50914;font-family:"Bebas Neue",sans-serif;font-size:25vw;font-weight:700;text-shadow:0 0 10px rgba(229,9,20,.5);animation:mIntro 4s ease-out forwards;opacity:0;transform:scale(1.5)}.m-intro__shine{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.1) 60%, transparent 100%);animation:shine 2s ease-in-out 1s;opacity:0;transform:skewX(-20deg)}@keyframes mIntro{0%{opacity:0;transform:scale(1.5)}20%{opacity:1;transform:scale(1)}80%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(0.8)}}@keyframes shine{0%{opacity:0;transform:translateX(-100%) skewX(-20deg)}100%{opacity:1;transform:translateX(100%) skewX(-20deg)}}
+
+.netflix-card {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin: 16px;
+    height: 200px;
+    background-color: #1a1a1a;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.netflix-card__placeholder {
+    background: linear-gradient(135deg, #333, #1a1a1a);
+    transition: all 0.3s ease;
+}
+
+.netflix-card__overlay {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.2) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.netflix-card:hover {
+    transform: scale(1.15) translateY(-10px);
+    z-index: 20;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+}
+
+.netflix-card:hover .netflix-card__overlay {
+    opacity: 1;
+}
+
+.netflix-card__tech span {
+    background: linear-gradient(to right, #e50914, #b50710);
+    color: #fff;
+}
+
+.netflix-card--featured {
+    height: 400px;
+    margin-bottom: 40px;
+}
+
+.netflix-card--featured .netflix-card__overlay {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0.3) 100%);
+    padding: 30px;
+}
+
+.netflix-row__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 10px 0;
+}
